@@ -13,7 +13,7 @@ Module ModDatabaseObjects
 
                 Dim frm As FrmTables = TryCast(FrmDatabase.SplitDatabase.Panel2.Controls.OfType(Of FrmTables)().FirstOrDefault(), FrmTables)
                 frm.LblTables.Text = "Tables - Loading..."
-                Application.DoEvents()
+                System.Windows.Forms.Application.DoEvents()
 
                 conn.Open()
                 ' Get the schema for tables
@@ -48,7 +48,7 @@ Module ModDatabaseObjects
 
                 Dim frm As FrmQueries = TryCast(FrmDatabase.SplitDatabase.Panel2.Controls.OfType(Of FrmQueries)().FirstOrDefault(), FrmQueries)
                 frm.LblQueries.Text = "Queries - Loading..."
-                Application.DoEvents()
+                System.Windows.Forms.Application.DoEvents()
 
                 conn.Open()
                 ' Get the schema for queries (views)
@@ -98,7 +98,7 @@ Module ModDatabaseObjects
 
             Dim frm As FrmForms = TryCast(FrmDatabase.SplitDatabase.Panel2.Controls.OfType(Of FrmForms)().FirstOrDefault(), FrmForms)
             frm.LblForms.Text = "Forms - Loading..."
-            Application.DoEvents()
+            System.Windows.Forms.Application.DoEvents()
 
             frm.LstForms.Items.Clear()
 
@@ -123,7 +123,7 @@ Module ModDatabaseObjects
 
             Dim frm As FrmReports = TryCast(FrmDatabase.SplitDatabase.Panel2.Controls.OfType(Of FrmReports)().FirstOrDefault(), FrmReports)
             frm.LblReports.Text = "Reports - Loading..."
-            Application.DoEvents()
+            System.Windows.Forms.Application.DoEvents()
 
             frm.LstReports.Items.Clear()
 
