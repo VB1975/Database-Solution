@@ -26,6 +26,7 @@ Partial Class FrmForms
         Me.BtnMainMenu = New System.Windows.Forms.Button()
         Me.LstForms = New System.Windows.Forms.ListBox()
         Me.LblForms = New System.Windows.Forms.Label()
+        Me.BtnOpenFormInAccess = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'BtnMainMenu
@@ -68,12 +69,28 @@ Partial Class FrmForms
         Me.LblForms.TabIndex = 15
         Me.LblForms.Text = "Forms"
         '
+        'BtnOpenFormInAccess
+        '
+        Me.BtnOpenFormInAccess.BackColor = System.Drawing.SystemColors.Control
+        Me.BtnOpenFormInAccess.FlatAppearance.BorderSize = 0
+        Me.BtnOpenFormInAccess.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.BtnOpenFormInAccess.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnOpenFormInAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnOpenFormInAccess.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnOpenFormInAccess.Location = New System.Drawing.Point(12, 605)
+        Me.BtnOpenFormInAccess.Name = "BtnOpenFormInAccess"
+        Me.BtnOpenFormInAccess.Size = New System.Drawing.Size(203, 44)
+        Me.BtnOpenFormInAccess.TabIndex = 17
+        Me.BtnOpenFormInAccess.Text = "Open Form In Access"
+        Me.BtnOpenFormInAccess.UseVisualStyleBackColor = False
+        '
         'FrmForms
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1145, 661)
+        Me.Controls.Add(Me.BtnOpenFormInAccess)
         Me.Controls.Add(Me.LstForms)
         Me.Controls.Add(Me.LblForms)
         Me.Controls.Add(Me.BtnMainMenu)
@@ -87,4 +104,5 @@ Partial Class FrmForms
     Friend WithEvents BtnMainMenu As Button
     Friend WithEvents LstForms As ListBox
     Friend WithEvents LblForms As Label
+    Friend WithEvents BtnOpenFormInAccess As Button
 End Class
