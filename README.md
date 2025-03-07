@@ -6,6 +6,7 @@
 - Queries
   - Also display Datasheet and SQL
 - Forms
+  - The selected Form can be opened externally in Access
 - Reports
 
 #### Screenshots
