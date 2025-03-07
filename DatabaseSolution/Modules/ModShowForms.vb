@@ -28,21 +28,6 @@
         frm.TxtDatabasePath.Text = dbPath
         frm.TxtDatabaseName.Text = dbName
 
-        If dbPath = "" Then
-            frm.BtnOpenDatabase.Enabled = False
-            frm.BtnCloseDatabase.Enabled = False
-            frm.BtnOpenInAccess.Visible = False
-        Else
-            frm.BtnOpenInAccess.Visible = True
-            If isConnectionOpen Then
-                frm.BtnOpenDatabase.Enabled = False
-                frm.BtnCloseDatabase.Enabled = True
-            Else
-                frm.BtnOpenDatabase.Enabled = True
-                frm.BtnCloseDatabase.Enabled = False
-            End If
-        End If
-
         RecolorLabels()
 
     End Sub

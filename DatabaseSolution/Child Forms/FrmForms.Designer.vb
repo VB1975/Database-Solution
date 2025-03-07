@@ -71,6 +71,7 @@ Partial Class FrmForms
         '
         'BtnOpenFormInAccess
         '
+        Me.BtnOpenFormInAccess.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.BtnOpenFormInAccess.BackColor = System.Drawing.SystemColors.Control
         Me.BtnOpenFormInAccess.FlatAppearance.BorderSize = 0
         Me.BtnOpenFormInAccess.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))

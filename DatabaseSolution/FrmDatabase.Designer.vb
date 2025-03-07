@@ -61,7 +61,7 @@ Partial Class FrmDatabase
         Me.SplitDatabase.Panel1.Controls.Add(Me.LblForms)
         Me.SplitDatabase.Panel1.Controls.Add(Me.LblReports)
         Me.SplitDatabase.Panel1MinSize = 175
-        Me.SplitDatabase.Size = New System.Drawing.Size(1306, 785)
+        Me.SplitDatabase.Size = New System.Drawing.Size(1340, 785)
         Me.SplitDatabase.SplitterDistance = 175
         Me.SplitDatabase.SplitterWidth = 1
         Me.SplitDatabase.TabIndex = 1
@@ -172,11 +172,12 @@ Partial Class FrmDatabase
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1306, 785)
+        Me.ClientSize = New System.Drawing.Size(1340, 785)
         Me.Controls.Add(Me.SplitDatabase)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.MinimumSize = New System.Drawing.Size(1356, 824)
         Me.Name = "FrmDatabase"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Database"

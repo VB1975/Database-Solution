@@ -121,6 +121,7 @@
     <Compile Include="Modules\ModDatabaseConnection.vb" />
     <Compile Include="Modules\ModDatabaseObjects.vb" />
     <Compile Include="Modules\ModGlobal.vb" />
+    <Compile Include="Modules\ModRecentDatabases.vb" />
     <Compile Include="Modules\ModShowForms.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -147,6 +148,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\FrmQueries.resx">
       <DependentUpon>FrmQueries.vb</DependentUpon>
@@ -235,6 +237,11 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Databases\RecentDatabases.accdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
