@@ -12,7 +12,7 @@
 #### Screenshots
 ##### Click on an image for a larger view.
 
-![image](https://github.com/user-attachments/assets/32974885-62d6-44c3-9d17-f5422a5ee4f1)
+![image](https://github.com/user-attachments/assets/11cf86d8-f2e7-4f5a-a5ca-944a48c2a00a)
 
 ![image](https://github.com/user-attachments/assets/34fd6757-48c2-4cf2-a1a1-b5b4831239f1)
 
