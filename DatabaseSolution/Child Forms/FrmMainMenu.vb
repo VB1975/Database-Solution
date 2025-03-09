@@ -5,6 +5,7 @@
         If dbPath = "" Then
             BtnOpenDatabase.Enabled = False
             BtnCloseDatabase.Enabled = False
+            BtnBrowse.Enabled = True
             BtnOpenInAccess.Enabled = False
         Else
             BtnOpenInAccess.Enabled = True
@@ -50,6 +51,8 @@
 
     Private Sub BtnCloseDatabase_Click(sender As Object, e As EventArgs) Handles BtnCloseDatabase.Click
 
+        TxtDatabaseName.Clear()
+        TxtDatabasePath.Clear()
         dbPath = ""
         dbName = ""
 
@@ -76,7 +79,8 @@
         BtnOpenDatabase.Enabled = False
         BtnCloseDatabase.Enabled = True
         LblSystemMessage.Visible = False
-        SaveToRecentDatabases()
+        'SaveToRecentDatabases()
+        AddOrUpdateDatabaseRecord()
         LoadRecentDatabases()
 
     End Sub
