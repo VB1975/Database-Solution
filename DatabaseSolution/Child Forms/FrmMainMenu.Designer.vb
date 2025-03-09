@@ -34,11 +34,11 @@ Partial Class FrmMainMenu
         Me.BtnSettings = New System.Windows.Forms.Button()
         Me.LblSystemMessage = New System.Windows.Forms.Label()
         Me.LvwRecentDatabases = New System.Windows.Forms.ListView()
+        Me.ColDatabaseID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColDatabaseName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColDatabasePath = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColLastOpened = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ColDatabaseID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'Label2
@@ -193,6 +193,11 @@ Partial Class FrmMainMenu
         Me.LvwRecentDatabases.UseCompatibleStateImageBehavior = False
         Me.LvwRecentDatabases.View = System.Windows.Forms.View.Details
         '
+        'ColDatabaseID
+        '
+        Me.ColDatabaseID.Text = "ID"
+        Me.ColDatabaseID.Width = 0
+        '
         'ColDatabaseName
         '
         Me.ColDatabaseName.Text = "Database Name"
@@ -218,10 +223,6 @@ Partial Class FrmMainMenu
         Me.Label3.Size = New System.Drawing.Size(159, 20)
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Recent Databases"
-        '
-        'ColDatabaseID
-        '
-        Me.ColDatabaseID.Text = "ID"
         '
         'FrmMainMenu
         '

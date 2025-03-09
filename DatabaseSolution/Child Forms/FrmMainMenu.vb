@@ -1,4 +1,54 @@
-﻿Public Class FrmMainMenu
+﻿Imports System.Data.OleDb
+
+Public Class FrmMainMenu
+
+    Private Sub LoadRecentDatabases()
+
+        ' Query to retrieve data
+        Dim query As String = "SELECT DatabaseID, DatabaseName, DatabasePath, LastOpened FROM RecentDatabaseQ"
+
+        ' Create a temporary list to store items (to update UI in one step)
+        Dim items As New List(Of ListViewItem)()
+
+        Try
+            ' Open connection
+            Using conn As New OleDbConnection(connString)
+                Using cmd As New OleDbCommand(query, conn)
+                    conn.Open()
+                    Using reader As OleDbDataReader = cmd.ExecuteReader()
+                        ' Loop through query results
+                        While reader.Read()
+                            ' Create a new ListView item
+                            Dim item As New ListViewItem(reader("DatabaseID").ToString())
+                            item.SubItems.Add(reader("DatabaseName").ToString())
+                            item.SubItems.Add(reader("DatabasePath").ToString())
+                            item.SubItems.Add(Convert.ToDateTime(reader("LastOpened")).ToString("yyyy-MM-dd HH:mm:ss"))
+
+                            ' Add to temporary list (not the UI yet)
+                            items.Add(item)
+                        End While
+                    End Using
+                End Using
+                conn.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading recent databases: " & ex.Message)
+            Exit Sub
+        End Try
+
+        ' Update UI on the main thread
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub()
+                          LvwRecentDatabases.Items.Clear()
+                          LvwRecentDatabases.Items.AddRange(items.ToArray())
+                      End Sub)
+        Else
+            LvwRecentDatabases.Items.Clear()
+            LvwRecentDatabases.Items.AddRange(items.ToArray())
+        End If
+
+    End Sub
+
 
     Private Sub EnableButtons()
 
@@ -79,7 +129,6 @@
         BtnOpenDatabase.Enabled = False
         BtnCloseDatabase.Enabled = True
         LblSystemMessage.Visible = False
-        'SaveToRecentDatabases()
         AddOrUpdateDatabaseRecord()
         LoadRecentDatabases()
 
@@ -95,10 +144,8 @@
 
         LblSystemMessage.Visible = False
         EnableButtons()
-        LoadRecentDatabases()
 
     End Sub
-
 
     Private Sub LvwRecentDatabases_DoubleClick(sender As Object, e As EventArgs) Handles LvwRecentDatabases.DoubleClick
 
@@ -113,6 +160,12 @@
 
         LblSystemMessage.Visible = False
         EnableButtons()
+
+    End Sub
+
+    Private Async Sub FrmMainMenu_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+        Await Task.Run(Sub() LoadRecentDatabases())
 
     End Sub
 End Class
