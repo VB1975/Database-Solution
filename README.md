@@ -9,6 +9,13 @@
   - The selected Form can be opened externally in Access
 - Reports
 
+### The Main Menu has Recent Databases list (including a Context Menu)
+#### The Context Menu has the following items
+- Select Database
+- Open Database
+- Open In Access
+- Remove From List
+
 #### Screenshots
 ##### Click on an image for a larger view.
 
