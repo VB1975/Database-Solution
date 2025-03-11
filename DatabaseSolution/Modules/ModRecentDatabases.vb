@@ -39,10 +39,12 @@ Module ModRecentDatabases
                         End Using
                     End If
                 End Using
+                conn.Close()
             End Using
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         End Try
+
     End Sub
 
     Public Sub SaveToRecentDatabasesX()
@@ -55,4 +57,58 @@ Module ModRecentDatabases
         objItem.SubItems.Add(DateTime.Now.ToString("dd/MM/yyyy  HH:mm:ss"))
 
     End Sub
+
+    Public Sub DeleteRecentDatabaseEntry()
+
+        Try
+            Using conn As New OleDbConnection(connString)
+                conn.Open()
+                Dim deleteQuery As String = "DELETE FROM RecentDatabaseT WHERE DatabasePath = ?"
+                Using deleteCmd As New OleDbCommand(deleteQuery, conn)
+                    deleteCmd.Parameters.Add("?", OleDbType.VarChar, 255).Value = dbPath
+                    deleteCmd.ExecuteNonQuery()
+                End Using
+                conn.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub LoadRecentDatabases()
+
+        Dim query As String = "SELECT DatabaseID, DatabaseName, DatabasePath, LastOpened FROM RecentDatabaseT"
+        Dim items As New List(Of ListViewItem)()
+        Try
+            Using conn As New OleDbConnection(connString)
+                Using cmd As New OleDbCommand(query, conn)
+                    conn.Open()
+                    Using reader As OleDbDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim item As New ListViewItem(reader("DatabaseID").ToString())
+                            item.SubItems.Add(reader("DatabaseName").ToString())
+                            item.SubItems.Add(reader("DatabasePath").ToString())
+                            item.SubItems.Add(Convert.ToDateTime(reader("LastOpened")).ToString("yyyy-MM-dd HH:mm:ss"))
+                            items.Add(item)
+                        End While
+                    End Using
+                End Using
+                conn.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading recent databases: " & ex.Message)
+            Exit Sub
+        End Try
+        If FrmMainMenu.InvokeRequired Then
+            FrmMainMenu.Invoke(Sub()
+                                   FrmMainMenu.LvwRecentDatabases.Items.Clear()
+                                   FrmMainMenu.LvwRecentDatabases.Items.AddRange(items.ToArray())
+                               End Sub)
+        Else
+            FrmMainMenu.LvwRecentDatabases.Items.Clear()
+            FrmMainMenu.LvwRecentDatabases.Items.AddRange(items.ToArray())
+        End If
+    End Sub
+
 End Module

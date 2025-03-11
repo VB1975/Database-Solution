@@ -109,8 +109,6 @@ Public Class FrmMainMenu
         isConnectionOpen = False
         BtnOpenDatabase.Text = "Open Database"
         EnableButtons()
-        BtnOpenDatabase.Enabled = True
-        BtnCloseDatabase.Enabled = False
 
     End Sub
 
@@ -120,7 +118,7 @@ Public Class FrmMainMenu
 
     End Sub
 
-    Private Sub BtnOpenDatabase_Click(sender As Object, e As EventArgs) Handles BtnOpenDatabase.Click
+    Private Sub OpenDatabase()
 
         OpenConnection()
         isConnectionOpen = True
@@ -131,6 +129,12 @@ Public Class FrmMainMenu
         LblSystemMessage.Visible = False
         AddOrUpdateDatabaseRecord()
         LoadRecentDatabases()
+
+    End Sub
+
+    Private Sub BtnOpenDatabase_Click(sender As Object, e As EventArgs) Handles BtnOpenDatabase.Click
+
+        OpenDatabase()
 
     End Sub
 
@@ -147,7 +151,7 @@ Public Class FrmMainMenu
 
     End Sub
 
-    Private Sub LvwRecentDatabases_DoubleClick(sender As Object, e As EventArgs) Handles LvwRecentDatabases.DoubleClick
+    Private Sub SelectDatabase(sender As Object, e As EventArgs) Handles LvwRecentDatabases.DoubleClick, MnuItemSelectDatabase.Click
 
         If LvwRecentDatabases.SelectedItems.Count > 0 Then
             If Not isConnectionOpen Then
@@ -166,6 +170,28 @@ Public Class FrmMainMenu
     Private Async Sub FrmMainMenu_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
         Await Task.Run(Sub() LoadRecentDatabases())
+
+    End Sub
+
+    Private Sub MnuItemOpenDatabase_Click(sender As Object, e As EventArgs) Handles MnuItemOpenDatabase.Click
+
+        SelectDatabase(sender, e)
+        OpenDatabase()
+
+    End Sub
+
+    Private Sub MnuItemOpenInAccess_Click(sender As Object, e As EventArgs) Handles MnuItemOpenInAccess.Click
+
+        Process.Start(New ProcessStartInfo(LvwRecentDatabases.SelectedItems(0).SubItems(2).Text) With {.UseShellExecute = True})
+
+    End Sub
+
+    Private Sub MnuItemRemoveFromList_Click(sender As Object, e As EventArgs) Handles MnuItemRemoveFromList.Click
+
+        dbPath = LvwRecentDatabases.SelectedItems(0).SubItems(2).Text
+        DeleteRecentDatabaseEntry()
+        dbPath = ""
+        LoadRecentDatabases()
 
     End Sub
 End Class

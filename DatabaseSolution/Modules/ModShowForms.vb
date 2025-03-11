@@ -25,8 +25,10 @@
         FrmDatabase.SplitDatabase.Panel2.Controls.Add(frm)
         frm.Show()
 
-        frm.TxtDatabasePath.Text = dbPath
-        frm.TxtDatabaseName.Text = dbName
+        If dbPath <> "" Then
+            frm.TxtDatabasePath.Text = dbPath
+            frm.TxtDatabaseName.Text = dbName
+        End If
 
         RecolorLabels()
 
