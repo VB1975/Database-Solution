@@ -151,7 +151,7 @@ Public Class FrmMainMenu
 
     End Sub
 
-    Private Sub SelectDatabase(sender As Object, e As EventArgs) Handles LvwRecentDatabases.DoubleClick, MnuItemSelectDatabase.Click
+    Private Sub SelectDatabase(sender As Object, e As EventArgs) Handles LvwRecentDatabases.DoubleClick
 
         If LvwRecentDatabases.SelectedItems.Count > 0 Then
             If Not isConnectionOpen Then
@@ -173,20 +173,20 @@ Public Class FrmMainMenu
 
     End Sub
 
-    Private Sub MnuItemOpenDatabase_Click(sender As Object, e As EventArgs) Handles MnuItemOpenDatabase.Click
+    Private Sub MnuItemOpenDatabase_Click(sender As Object, e As EventArgs)
 
         SelectDatabase(sender, e)
         OpenDatabase()
 
     End Sub
 
-    Private Sub MnuItemOpenInAccess_Click(sender As Object, e As EventArgs) Handles MnuItemOpenInAccess.Click
+    Private Sub MnuItemOpenInAccess_Click(sender As Object, e As EventArgs)
 
         Process.Start(New ProcessStartInfo(LvwRecentDatabases.SelectedItems(0).SubItems(2).Text) With {.UseShellExecute = True})
 
     End Sub
 
-    Private Sub MnuItemRemoveFromList_Click(sender As Object, e As EventArgs) Handles MnuItemRemoveFromList.Click
+    Private Sub MnuItemRemoveFromList_Click(sender As Object, e As EventArgs)
 
         dbPath = LvwRecentDatabases.SelectedItems(0).SubItems(2).Text
         DeleteRecentDatabaseEntry()
@@ -194,4 +194,24 @@ Public Class FrmMainMenu
         LoadRecentDatabases()
 
     End Sub
+
+    Private Sub LvwRecentDatabases_MouseDown(sender As Object, e As MouseEventArgs) Handles LvwRecentDatabases.MouseDown
+
+        If e.Button = MouseButtons.Right Then
+            Dim item As ListViewItem = LvwRecentDatabases.GetItemAt(e.X, e.Y)
+            If item IsNot Nothing Then
+                LvwRecentDatabases.SelectedItems.Clear()
+                item.Selected = True ' Ensure the item under the mouse is selected
+
+                Dim MnuRecentDatabases As New ContextMenuStrip
+                MnuRecentDatabases.Items.Add("Select Database", Nothing, AddressOf SelectDatabase)
+                MnuRecentDatabases.Items.Add("Open Database", Nothing, AddressOf MnuItemOpenDatabase_Click)
+                MnuRecentDatabases.Items.Add("Open in Access", Nothing, AddressOf MnuItemOpenInAccess_Click)
+                MnuRecentDatabases.Items.Add("Remove from List", Nothing, AddressOf MnuItemRemoveFromList_Click)
+
+                MnuRecentDatabases.Show(LvwRecentDatabases, e.Location) ' Show menu at click location
+            End If
+        End If
+    End Sub
+
 End Class

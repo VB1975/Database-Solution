@@ -22,7 +22,6 @@ Partial Class FrmMainMenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMainMenu))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TxtDatabasePath = New System.Windows.Forms.TextBox()
@@ -40,12 +39,6 @@ Partial Class FrmMainMenu
         Me.ColDatabasePath = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColLastOpened = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.MnuRecentDatabases = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.MnuItemSelectDatabase = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuItemOpenDatabase = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuItemOpenInAccess = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuItemRemoveFromList = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuRecentDatabases.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -187,7 +180,6 @@ Partial Class FrmMainMenu
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LvwRecentDatabases.BackColor = System.Drawing.Color.Gray
         Me.LvwRecentDatabases.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColDatabaseID, Me.ColDatabaseName, Me.ColDatabasePath, Me.ColLastOpened})
-        Me.LvwRecentDatabases.ContextMenuStrip = Me.MnuRecentDatabases
         Me.LvwRecentDatabases.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LvwRecentDatabases.ForeColor = System.Drawing.Color.White
         Me.LvwRecentDatabases.FullRowSelect = True
@@ -232,36 +224,6 @@ Partial Class FrmMainMenu
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Recent Databases"
         '
-        'MnuRecentDatabases
-        '
-        Me.MnuRecentDatabases.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemSelectDatabase, Me.MnuItemOpenDatabase, Me.MnuItemOpenInAccess, Me.MnuItemRemoveFromList})
-        Me.MnuRecentDatabases.Name = "MnuRecentDatabases"
-        Me.MnuRecentDatabases.Size = New System.Drawing.Size(181, 114)
-        '
-        'MnuItemSelectDatabase
-        '
-        Me.MnuItemSelectDatabase.Name = "MnuItemSelectDatabase"
-        Me.MnuItemSelectDatabase.Size = New System.Drawing.Size(169, 22)
-        Me.MnuItemSelectDatabase.Text = "Select Database"
-        '
-        'MnuItemOpenDatabase
-        '
-        Me.MnuItemOpenDatabase.Name = "MnuItemOpenDatabase"
-        Me.MnuItemOpenDatabase.Size = New System.Drawing.Size(180, 22)
-        Me.MnuItemOpenDatabase.Text = "Open Database"
-        '
-        'MnuItemOpenInAccess
-        '
-        Me.MnuItemOpenInAccess.Name = "MnuItemOpenInAccess"
-        Me.MnuItemOpenInAccess.Size = New System.Drawing.Size(180, 22)
-        Me.MnuItemOpenInAccess.Text = "Open In Access"
-        '
-        'MnuItemRemoveFromList
-        '
-        Me.MnuItemRemoveFromList.Name = "MnuItemRemoveFromList"
-        Me.MnuItemRemoveFromList.Size = New System.Drawing.Size(180, 22)
-        Me.MnuItemRemoveFromList.Text = "Remove From List"
-        '
         'FrmMainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -284,7 +246,6 @@ Partial Class FrmMainMenu
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FrmMainMenu"
         Me.Text = "Main Menu"
-        Me.MnuRecentDatabases.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -306,9 +267,4 @@ Partial Class FrmMainMenu
     Friend WithEvents ColLastOpened As ColumnHeader
     Friend WithEvents Label3 As Label
     Friend WithEvents ColDatabaseID As ColumnHeader
-    Friend WithEvents MnuRecentDatabases As ContextMenuStrip
-    Friend WithEvents MnuItemSelectDatabase As ToolStripMenuItem
-    Friend WithEvents MnuItemOpenDatabase As ToolStripMenuItem
-    Friend WithEvents MnuItemOpenInAccess As ToolStripMenuItem
-    Friend WithEvents MnuItemRemoveFromList As ToolStripMenuItem
 End Class
